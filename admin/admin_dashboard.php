@@ -28,33 +28,45 @@ include '../db.php';
         <a class="nav-link" href="../logout.php">Logout</a>
     </nav>
 
-    <!-- Assigned Flights Table -->
+    <!-- Flights Assigned to Staff -->
     <div class="card mb-4">
-        <div class="card-header">Staff-Flight Assignments</div>
+        <div class="card-header">Flights Assigned to Staff</div>
         <div class="card-body">
-            <table class="table table-bordered table-sm">
+            <table class="table table-bordered table-sm table-hover">
                 <thead class="table-light">
                     <tr>
                         <th>Flight Number</th>
                         <th>Date</th>
                         <th>Time</th>
-                        <th>Staff Name</th>
+                        <th>Flight Type</th>
+                        <th>Assigned Staff</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $query = "SELECT f.flight_number, f.date, f.time, s.first_name, s.last_name 
-                              FROM Attend a
-                              JOIN Staff s ON a.staff_id = s.staff_id
-                              JOIN Flight f ON a.flight_id = f.flight_id";
+                    // Fetch flights with assigned staff
+                    $query = "
+                        SELECT f.flight_number, f.date, f.time, f.flight_type,
+                               GROUP_CONCAT(CONCAT(s.first_name, ' ', s.last_name) SEPARATOR ', ') AS staff_names
+                        FROM Flight f
+                        LEFT JOIN Attend a ON f.flight_id = a.flight_id
+                        LEFT JOIN Staff s ON a.staff_id = s.staff_id
+                        GROUP BY f.flight_id
+                        ORDER BY f.date DESC, f.time DESC
+                    ";
                     $result = $conn->query($query);
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>
-                                <td>{$row['flight_number']}</td>
-                                <td>{$row['date']}</td>
-                                <td>{$row['time']}</td>
-                                <td>{$row['first_name']} {$row['last_name']}</td>
+                    if ($result && $result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                <td>" . htmlspecialchars($row['flight_number']) . "</td>
+                                <td>" . htmlspecialchars($row['date']) . "</td>
+                                <td>" . htmlspecialchars($row['time']) . "</td>
+                                <td>" . htmlspecialchars(ucfirst($row['flight_type'])) . "</td>
+                                <td>" . htmlspecialchars($row['staff_names'] ?? 'No staff assigned') . "</td>
                               </tr>";
+                        }
+                    } else {
+                        echo '<tr><td colspan="5" class="text-center">No flights found.</td></tr>';
                     }
                     ?>
                 </tbody>

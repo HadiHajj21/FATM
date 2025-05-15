@@ -3,10 +3,10 @@ session_start();
 // Check if the user is already logged in
 if (isset($_SESSION['staff_id'])) {
     if ($_SESSION['role'] == 'admin') {
-        header("Location: admin/dashboard.php");
+        header("Location: admin/admin_dashboard.php");
         exit();
     } else {
-        header("Location: attendant/dashboard.php");
+        header("Location: attendant/attendant_dashboard.php");
         exit();
     }
 }
@@ -27,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['role'] = $row['role'];
 
         if ($row['role'] == 'admin') {
-            header("Location: admin/dashboard.php");
+            header("Location: admin/admin_dashboard.php");
             die;
         } else {
             // Assuming 'attendant' is the role for attendants
-            header("Location: attendant/dashboard.php");
+            header("Location: attendant/attendant_dashboard.php");
             die;
         }
         exit();

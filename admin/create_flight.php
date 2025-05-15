@@ -22,9 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tasks = ($flight_type === 'long') ? ($_POST['tasks_long'] ?? []) : ($_POST['tasks_short'] ?? []);
 
         if (!empty($tasks)) {
-            $stmt_task = $conn->prepare("INSERT INTO Task (flight_id, task_name) VALUES (?, ?)");
+            $stmt_task = $conn->prepare("INSERT INTO Task (flight_id, task_name, category) VALUES (?, ?, ?)");
             foreach ($tasks as $task) {
-                $stmt_task->bind_param("is", $flight_id, $task);
+                list($task_name, $category) = explode('|', $task); // Split task name and category
+                $stmt_task->bind_param("iss", $flight_id, $task_name, $category);
                 $stmt_task->execute();
             }
         }
@@ -86,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
             foreach ($long_pre as $i => $task) {
                 echo '<div class="form-check">
-                        <input type="checkbox" class="form-check-input" name="tasks_long[]" value="'. $task .'" id="long_pre'.$i.'">
+                        <input type="checkbox" class="form-check-input" name="tasks_long[]" value="'. $task .'|Pre-flight" id="long_pre'.$i.'">
                         <label class="form-check-label" for="long_pre'.$i.'">'. $task .'</label>
                       </div>';
             }
@@ -98,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
             foreach ($long_during as $i => $task) {
                 echo '<div class="form-check">
-                        <input type="checkbox" class="form-check-input" name="tasks_long[]" value="'. $task .'" id="long_during'.$i.'">
+                        <input type="checkbox" class="form-check-input" name="tasks_long[]" value="'. $task .'|During flight" id="long_during'.$i.'">
                         <label class="form-check-label" for="long_during'.$i.'">'. $task .'</label>
                       </div>';
             }
@@ -114,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
             foreach ($short_pre as $i => $task) {
                 echo '<div class="form-check">
-                        <input type="checkbox" class="form-check-input" name="tasks_short[]" value="'. $task .'" id="short_pre'.$i.'">
+                        <input type="checkbox" class="form-check-input" name="tasks_short[]" value="'. $task .'|Pre-flight" id="short_pre'.$i.'">
                         <label class="form-check-label" for="short_pre'.$i.'">'. $task .'</label>
                       </div>';
             }
@@ -126,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
             foreach ($short_during as $i => $task) {
                 echo '<div class="form-check">
-                        <input type="checkbox" class="form-check-input" name="tasks_short[]" value="'. $task .'" id="short_during'.$i.'">
+                        <input type="checkbox" class="form-check-input" name="tasks_short[]" value="'. $task .'|During flight" id="short_during'.$i.'">
                         <label class="form-check-label" for="short_during'.$i.'">'. $task .'</label>
                       </div>';
             }

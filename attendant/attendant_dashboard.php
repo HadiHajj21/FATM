@@ -88,7 +88,7 @@ while ($row = $result->fetch_assoc()) {
                     <div class="task-category">
                         <h4 class="task-category__title">Pre-Flight Tasks</h4>
                         <?php foreach ($flight['tasks'] as $task): ?>
-                            <?php if ($task['category'] === 'pre-flight'): ?>
+                            <?php if (strtolower($task['category']) === 'pre-flight'): ?>
                                 <div class="task">
                                     <span class="task__name"><?= htmlspecialchars($task['task_name']) ?></span>
                                     <span class="task__status">
@@ -102,7 +102,7 @@ while ($row = $result->fetch_assoc()) {
                     <div class="task-category">
                         <h4 class="task-category__title">During Flight Tasks</h4>
                         <?php foreach ($flight['tasks'] as $task): ?>
-                            <?php if ($task['category'] === 'during-flight'): ?>
+                             <?php if (strtolower($task['category']) === 'during flight'): ?>
                                 <div class="task">
                                     <span class="task__name"><?= htmlspecialchars($task['task_name']) ?></span>
                                     <span class="task__status">

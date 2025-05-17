@@ -20,12 +20,12 @@ include '../db.php';
 
     <!-- Navigation -->
     <nav class="nav mb-4">
-        <a class="nav-link active" href="dashboard.php">Dashboard</a>
-        <a class="btn btn-primary mb-3" href="create_flight.php">Create New Flight</a>
-        <a class="nav-link" href="assign_flight.php">Assign Flights</a>
-        <a class="nav-link" href="assign_note.php">Assign Notes</a>
-        <a class="nav-link" href="signup.php">Add User</a>
-        <a class="nav-link" href="../logout.php">Logout</a>
+        <a class="m-2 nav-link active" href="admin_dashboard.php">Dashboard</a>
+        <a class="m-2 btn btn-primary mb-3" href="create_flight.php">Create New Flight</a>
+        <a class="m-2 btn btn-primary mb-3" href="assign_flight.php">Assign Flights</a>
+        <a class="m-2 btn btn-primary mb-3" href="assign_note.php">Assign Notes</a>
+        <a class="m-2 btn btn-primary mb-3" href="signup.php">Add User</a>
+        <a class="m-2 btn btn-primary mb-3" href="../logout.php">Logout</a>
     </nav>
 
     <!-- Flights Assigned to Staff -->
@@ -71,26 +71,6 @@ include '../db.php';
                     ?>
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    <!-- Assign Staff to Flight Form -->
-    <div class="card">
-        <div class="card-header">Assign Staff to Flight</div>
-        <div class="card-body">
-            <form action="assign_flight.php" method="POST" class="row g-3">
-                <div class="col-md-6">
-                    <label class="form-label">Staff ID</label>
-                    <input type="text" name="staff_id" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Flight ID</label>
-                    <input type="text" name="flight_id" class="form-control" required>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Assign</button>
-                </div>
-            </form>
         </div>
     </div>
 

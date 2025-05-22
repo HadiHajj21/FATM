@@ -76,10 +76,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #cce7ff, #ffffff);
+            padding: 2rem;
+        }
+        .report-form-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 51, 102, 0.1);
+        }
+
+        .report-form-container h2 {
+            color: #003366;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .report-form-container .form-label {
+            color: #003366;
+            font-weight: 600;
+        }
+
+        .report-form-container .form-select,
+        .report-form-container .form-control {
+            border: 1px solid #99ccff;
+            border-radius: 8px;
+            padding: 0.5rem;
+        }
+
+        .report-form-container .btn-primary {
+            background-color: #003366;
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .report-form-container .btn-primary:hover {
+            background-color: #0059b3;
+        }
+
+        .report-form-container .btn-danger {
+            margin-top: 1rem;
+            background-color: #cc0000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #fff;
+            transition: background 0.3s ease;
+        }
+
+        .report-form-container .btn-danger:hover {
+            background-color: #990000;
+        }
+        </style>
 </head>
 <body class="bg-light">
 
-<div class="container mt-5">
+<div class="container report-form-container">
     <h2>Submit Task Report</h2>
     <form method="POST" class="row g-3">
         <div class="col-md-6">

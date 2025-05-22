@@ -12,21 +12,35 @@ include '../db.php';
 <head>
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/admin_styles.css">
 </head>
-<body class="bg-light">
+<body>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Welcome, Admin 👋</h2>
+<div class="container mt-4">
 
-    <!-- Navigation -->
-    <nav class="nav mb-4">
-        <a class="m-2 nav-link active" href="admin_dashboard.php">Dashboard</a>
-        <a class="m-2 btn btn-primary mb-3" href="create_flight.php">Create New Flight</a>
-        <a class="m-2 btn btn-primary mb-3" href="assign_flight.php">Assign Flights</a>
-        <a class="m-2 btn btn-primary mb-3" href="assign_note.php">Assign Notes</a>
-        <a class="m-2 btn btn-primary mb-3" href="signup.php">Add User</a>
-        <a class="m-2 btn btn-primary mb-3" href="../logout.php">Logout</a>
-    </nav>
+    <!-- Dashboard Greeting -->
+    <div class="card mb-4">
+        <div class="card-body text-center">
+            <h2 class="card-title">Welcome, Admin 👋</h2>
+            <p class="card-text text-muted">Manage flights, staff assignments, and notes from this central dashboard.</p>
+        </div>
+    </div>
+
+    <!-- Navigation Panel -->
+    <div class="card mb-4">
+        <div class="card-header">
+            Admin Actions
+        </div>
+        <div class="card-body">
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+                <a class="btn btn-primary" href="create_flight.php">Create New Flight</a>
+                <a class="btn btn-primary" href="assign_flight.php">Assign Flights</a>
+                <a class="btn btn-primary" href="assign_note.php">Assign Notes</a>
+                <a class="btn btn-primary" href="signup.php">Add User</a>
+                <a class="btn btn-danger" href="../logout.php">Logout</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Flights Assigned to Staff -->
     <div class="card mb-4">
@@ -44,7 +58,6 @@ include '../db.php';
                 </thead>
                 <tbody>
                     <?php
-                    // Fetch flights with assigned staff
                     $query = "
                         SELECT f.flight_number, f.date, f.time, f.flight_type,
                                GROUP_CONCAT(CONCAT(s.first_name, ' ', s.last_name) SEPARATOR ', ') AS staff_names

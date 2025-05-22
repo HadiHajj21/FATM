@@ -1,0 +1,55 @@
+/* Admin Dashboard Styling */
+body {
+    background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2rem;
+}
+
+h2 {
+    color: #00264d;
+    text-align: center;
+    font-weight: bold;
+}
+
+nav.nav {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav .nav-link,
+nav .btn {
+    background-color: #007bff;
+    color: white !important;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+nav .btn:hover {
+    background-color: #0056b3;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 38, 77, 0.1);
+}
+
+.card-header {
+    background-color: #cce0ff;
+    color: #003366;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #99c2ff;
+}
+
+.table th {
+    color: #003366;
+    font-size: 0.95rem;
+}
+
+.table td {
+    font-size: 0.95rem;
+    color: #333;
+}

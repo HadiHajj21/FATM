@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Check if the user is already logged in
 if (isset($_SESSION['staff_id'])) {
     if ($_SESSION['role'] == 'admin') {
         header("Location: admin/admin_dashboard.php");
@@ -30,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: admin/admin_dashboard.php");
             die;
         } else {
-            // Assuming 'attendant' is the role for attendants
             header("Location: attendant/attendant_dashboard.php");
             die;
         }
@@ -41,10 +39,98 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<!-- Basic HTML Form -->
-<form method="POST">
-    Email: <input type="email" name="email" required><br>
-    Password: <input type="password" name="password" required><br>
-    <button type="submit">Login</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            body {
+                background: linear-gradient(to bottom right, #cce7ff, #ffffff);
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .login-container {
+                background-color: #ffffff;
+                padding: 2.5rem;
+                border-radius: 15px;
+                box-shadow: 0 4px 20px rgba(0, 51, 102, 0.2);
+                width: 100%;
+                max-width: 400px;
+            }
+            .login-title {
+                text-align: center;
+                color: #003366;
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+
+            label {
+                color: #003366;
+                margin-bottom: 0.3rem;
+                font-weight: 500;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                padding: 0.7rem;
+                margin-bottom: 1rem;
+                border: 1px solid #99ccff;
+                border-radius: 8px;
+                outline: none;
+                transition: border 0.3s ease;
+            }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus {
+                border-color: #3399ff;
+            }
+
+            button {
+                background-color: #003366;
+                color: white;
+                padding: 0.8rem;
+                border: none;
+                border-radius: 8px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #0059b3;
+            }
+
+            .error {
+                color: red;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            </style>
+    </head>
+    <body>
+        <div class="login-container">
+            <h2 class="login-title">Login</h2>
+            <form method="POST">
+            Email: <input type="email" name="email" required><br>
+            Password: <input type="password" name="password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        </div>
+    </body>
 <?php if (isset($error)) echo "<p>$error</p>"; ?>

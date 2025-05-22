@@ -60,8 +60,110 @@ while ($row = $result->fetch_assoc()) {
 <head>
     <meta charset="UTF-8">
     <title>Attendant Dashboard</title>
-    <link rel="stylesheet" href="./styles/attendant_styles.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body.dashboard {
+            background: linear-gradient(to bottom right, #cce7ff, #ffffff);
+            padding: 2rem;
+        }
+
+        .dashboard__container {
+            background-color: #ffffff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 51, 102, 0.15);
+        }
+
+        .dashboard__title {
+            color: #003366;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dashboard__nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .dashboard__link {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .dashboard__link:hover {
+            background-color: #0059b3;
+        }
+
+        .flight {
+            background-color: #f0f8ff;
+            border-left: 6px solid #003366;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .flight__header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+
+        .task-category {
+            margin-bottom: 1.2rem;
+        }
+
+        .task-category__title {
+            color: #0059b3;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #99ccff;
+            padding-bottom: 0.3rem;
+        }
+
+        .task {
+            background-color: #ffffff;
+            border: 1px solid #99ccff;
+            padding: 0.7rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task__name {
+            color: #003366;
+            font-weight: 500;
+        }
+
+        .task__status {
+            font-size: 0.95rem;
+            color: #003366;
+        }
+
+    </style>
 </head>
 <body class="dashboard">
 <div class="dashboard__container">

@@ -28,23 +28,118 @@ while ($flight = $result_flights->fetch_assoc()) {
     <meta charset="UTF-8" />
     <title>Flight Tasks</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles/attendant_styles.css">
     <style>
-        /* BEM style for tasks */
-        .tasks { max-width: 800px; margin: 2rem auto; }
-        .tasks__flight { margin-bottom: 3rem; padding: 1.5rem; border: 1px solid #ddd; border-radius: 6px; background: #fff; }
-        .tasks__flight-header { font-weight: 700; font-size: 1.3rem; margin-bottom: 1rem; }
-        .tasks__group { margin-top: 1rem; }
-        .tasks__group-title { font-weight: 600; margin-bottom: 0.5rem; }
-        .tasks__item { display: flex; align-items: center; margin-bottom: 0.5rem; }
-        .tasks__checkbox { margin-right: 0.5rem; }
-        .tasks__submit { margin-top: 1rem; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #cce7ff, #ffffff);
+            padding: 2rem;
+        }
+        .tasks {
+            max-width: 900px;
+            margin: 2rem auto;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 51, 102, 0.1);
+        }
+
+        .tasks h2 {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 2rem;
+        }
+
+        .tasks__flight {
+            margin-bottom: 2rem;
+            border-left: 6px solid #003366;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background-color: #f0f8ff;
+        }
+
+        .tasks__flight-header {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #003366;
+        }
+
+        .tasks__group {
+            margin-top: 1rem;
+        }
+
+        .tasks__group-title {
+            font-weight: 600;
+            color: #0059b3;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            border-bottom: 2px solid #99ccff;
+            padding-bottom: 0.3rem;
+        }
+
+        .tasks__item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background-color: #ffffff;
+            border: 1px solid #99ccff;
+            border-radius: 8px;
+        }
+
+        .tasks__checkbox {
+            margin-right: 0.75rem;
+            transform: scale(1.2);
+        }
+
+        .tasks__submit {
+            margin-top: 2rem;
+            background-color: #003366;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            color: #ffffff;
+            border-radius: 8px;
+            font-weight: 600;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background 0.3s ease;
+        }
+
+        .tasks__submit:hover {
+            background-color: #0059b3;
+        }
+        .dashboard__nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .dashboard__link {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .dashboard__link:hover {
+            background-color: #0059b3;
+        }
     </style>
+
 </head>
 <body class="bg-light">
-    <nav class="dashboard__nav">
-        <a class="dashboard__link" href="attendant_dashboard.php">Return To Dashboard</a>        
-    </nav>
+    
 
 <div class="container tasks">
     <h2>Flight Tasks</h2>
@@ -136,6 +231,10 @@ while ($flight = $result_flights->fetch_assoc()) {
 
             <button type="submit" class="btn btn-primary tasks__submit">Update Task Status</button>
         </form>
+
+        <nav class="dashboard__nav">
+            <a class="dashboard__link" href="attendant_dashboard.php">Return To Dashboard</a>        
+        </nav>
     <?php endif; ?>
 
 </div>

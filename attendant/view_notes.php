@@ -30,9 +30,70 @@ $notes = $result->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <title>My Notes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #cce7ff, #ffffff);
+            padding: 2rem;
+        }
+        .notes-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 51, 102, 0.1);
+        }
+
+        .notes-container h2 {
+            color: #003366;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .card {
+            border: 1px solid #99ccff;
+            border-radius: 12px;
+            background-color: #f9fbff;
+        }
+
+        .card-body {
+            padding: 1rem 1.25rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #003366;
+        }
+
+        .text-muted {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .btn-danger {
+            margin-top: 1rem;
+            background-color: #cc0000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #fff;
+            transition: background 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #990000;
+        }
+    </style>
 </head>
 <body class="bg-light">
-<div class="container mt-5">
+<div class="container notes-container">
     <h2 class="mb-4">Assigned Notes</h2>
 
     <?php if (empty($notes)): ?>

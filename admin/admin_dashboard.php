@@ -36,6 +36,7 @@ include '../db.php';
                 <a class="btn btn-primary" href="create_flight.php">Create New Flight</a>
                 <a class="btn btn-primary" href="assign_flight.php">Assign Flights</a>
                 <a class="btn btn-primary" href="assign_note.php">Assign Notes</a>
+                <a class="btn btn-primary" href="view_reports.php">View Reports</a>
                 <a class="btn btn-primary" href="signup.php">Add User</a>
                 <a class="btn btn-danger" href="../logout.php">Logout</a>
             </div>
